@@ -179,7 +179,7 @@ add_action('rest_api_init', function () {
                 $data[] = [
                     'id'       => $user->ID,
                     'name'     => $user->display_name,
-                    'avatar'   => get_avatar_url($user->ID),
+                    'avatar'   => get_avatar_url($user->ID, ['size' => 300]),
                     'intro'    => $intro,
                     'status'   => get_user_meta($user->ID, 'teamdisplay_status', true),
                     'periods'  => get_user_meta($user->ID, 'teamdisplay_periods', true),

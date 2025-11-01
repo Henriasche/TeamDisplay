@@ -1,13 +1,10 @@
 <template>
   <div class="user p-4 shadow rounded">
-      <div class="flex items-center space-x-4">
-        <img :src="user.avatar" class="w-300 h-300 rounded-full" />
-        <div>
+      <div class="flex items-center space-x-4"> 
+        <img :src="user.avatar" class="rounded-full" />
+      </div>
           <h3 class="font-semibold">{{ user.name }}</h3>
           <p class="text-sm text-gray-600">Status: {{ user.status }}</p>
-        </div>
-      </div>
-
       <p class="mt-2">{{ user.intro }}</p>
 
       <div v-if="user.periods && user.periods.length" class="mt-2 text-sm text-gray-600">
@@ -44,6 +41,11 @@ function formatDate(date: string | number | Date) {
     border-radius: 10px;
     width: max-content;
     box-shadow: black 5px 5px 20px 0px;
+}
+
+img {
+    width: 300px;
+    height: 300px;
 }
 
 </style>
