@@ -1,20 +1,23 @@
 <template>
-  <div class="user p-4 shadow rounded">
-      <div class="flex items-center space-x-4"> 
-        <img :src="user.avatar" class="rounded-full" />
+  <div class="user">
+      <div class="flex align-center"> 
+        <img :src="user.avatar" class="" />
       </div>
-          <h3 class="font-semibold">{{ user.name }}</h3>
-          <p class="text-sm text-gray-600">Status: {{ user.status }}</p>
-      <p class="mt-2">{{ user.intro }}</p>
 
-      <div v-if="user.periods && user.periods.length" class="mt-2 text-sm text-gray-600">
-        <h4 class="font-semibold mb-1">Aktivitätszeiträume:</h4>
-        <ul>
-          <li v-for="(p, i) in user.periods" :key="i">
-            <strong>{{ formatDate(p.from) }} – {{ formatDate(p.to) || 'heute' }}</strong><br>
-            <span v-if="p.activity">{{ p.activity }}</span>
-          </li>
-        </ul>
+      <div class="content p-4 flex column align-center">
+        <h2 class="">{{ user.name }}</h2>
+
+        <blockquote class="mt-2 text-gray-600">{{ user.intro }}</blockquote>
+
+        <div v-if="user.periods && user.periods.length" class="text-gray-600 align-start">
+          <h4 class="mb-1">Stationen</h4>
+          <ul>
+            <li v-for="(p, i) in user.periods" :key="i">
+              <strong>{{ formatDate(p.from) }} – {{ formatDate(p.to) || 'heute' }}</strong> <br/>
+              <span v-if="p.activity">{{ p.activity }}</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 </template>
@@ -40,12 +43,51 @@ function formatDate(date: string | number | Date) {
     background-color: white;
     border-radius: 10px;
     width: max-content;
-    box-shadow: black 5px 5px 20px 0px;
+    box-shadow: black 5px 5px 10px 0px;
+    max-width: 25%;
+    overflow: hidden;
+        
+    img {
+        width: 300px;
+        height: 300px;
+        background-color: #00008b4a;
+    }
+
+    .content {
+        position: relative;
+    }
+
+    blockquote {
+      font-size: x-large;
+      width: -webkit-fill-available;
+      word-break: break-word;
+      text-align: center;
+      position: relative;
+      padding: 45px 35px;
+      margin: 0;
+    }
+
+    blockquote:before {
+        content: "\201C";
+        font-size: 110px;
+        line-height: 0.96;
+        top: 0;
+        left: 0;
+        font-family: "Lora";
+        font-style: italic;
+        position: absolute;
+    }
+    blockquote:after {
+        content: "\201D";
+        font-size: 110px;
+        line-height: 0.96;
+        bottom: -55px;
+        right: 0;
+        font-family: "Lora";
+        font-style: italic;
+        position: absolute;
+    }
 }
 
-img {
-    width: 300px;
-    height: 300px;
-}
 
 </style>

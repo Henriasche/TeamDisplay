@@ -110,8 +110,8 @@ function teamdisplay_user_fields($user) {
             div.classList.add('period');
             div.style.marginBottom = '8px';
             div.innerHTML = `
-                <input type="date" name="teamdisplay_periods[${index}][from]" /> –
-                <input type="date" name="teamdisplay_periods[${index}][to]" /><br>
+                <input type="month" name="teamdisplay_periods[${index}][from]" /> –
+                <input type="month" name="teamdisplay_periods[${index}][to]" /><br>
                 <input type="text" name="teamdisplay_periods[${index}][activity]" placeholder="Beschreibung der Aktivität" style="width:80%; margin-top:4px;">
                 <button type="button" class="remove-period">Entfernen</button>
             `;

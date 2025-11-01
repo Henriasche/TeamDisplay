@@ -13,26 +13,30 @@
 
   .flex {
     display: flex;
+
+    &.row {
+      flex-direction: row;
+    }
+
+    &.column {
+      flex-direction: column;
+    }
   }
 
-  .items-center {
+  .align-center {
     align-items: center;
+  }
+
+  .align-start {
+    align-items: flex-start;
+  }
+
+  .align-end {
+    align-items: flex-end;
   }
 
   .space-x-4 > * + * {
     margin-left: 1rem;
-  }
-
-  .w-16 {
-    width: 4rem;
-  }
-
-  .h-16 {
-    height: 4rem;
-  }
-
-  .rounded-full {
-    border-radius: 9999px;
   }
 
   .font-semibold {
@@ -66,5 +70,9 @@
 
   .rounded {
     border-radius: 0.25rem;
+  }
+
+  ul, ol {
+    margin: 0;
   }
 }
