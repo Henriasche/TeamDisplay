@@ -29,7 +29,9 @@ import { ref, onMounted } from 'vue'
 const users = ref([])
 
 onMounted(async () => {
-  const res = await fetch('/wp-json/teamdisplay/v1/intros')
+  // Get API URL from WordPress or fallback to current origin
+  const apiUrl = window.teamdisplayConfig?.apiUrl || '/wp-json/teamdisplay/v1/intros'
+  const res = await fetch(apiUrl)
   users.value = await res.json()
 })
 

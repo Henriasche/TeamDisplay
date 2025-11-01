@@ -24,11 +24,25 @@ add_action('wp_enqueue_scripts', function () {
             null,
             true
         );
+    
+    // Pass WordPress API URL to the Vue app
+    wp_localize_script('teamdisplay-dev', 'teamdisplayConfig', [
+        'apiUrl' => rest_url('teamdisplay/v1/intros')
+    ]);
+    
     wp_enqueue_style(
         'teamdisplay-style',
         plugins_url('dist/app.css', __FILE__)
     );
 });
+
+// Add type="module" attribute to the Vite dev script
+add_filter('script_loader_tag', function($tag, $handle, $src) {
+    if ($handle === 'teamdisplay-dev') {
+        $tag = '<script type="module" src="' . esc_url($src) . '"></script>';
+    }
+    return $tag;
+}, 10, 3);
 
 /* --- Benutzerfelder im Profil --- */
 function teamdisplay_user_fields($user) {
