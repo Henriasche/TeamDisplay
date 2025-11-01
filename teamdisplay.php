@@ -86,9 +86,9 @@ function teamdisplay_user_fields($user) {
             <td id="teamdisplay-periods">
                 <?php foreach ($periods as $i => $p): ?>
                     <div class="period" style="margin-bottom:8px;">
-                        <input type="date" name="teamdisplay_periods[<?php echo $i; ?>][from]" value="<?php echo esc_attr($p['from']); ?>">
+                        <input type="month" name="teamdisplay_periods[<?php echo $i; ?>][from]" value="<?php echo esc_attr($p['from']); ?>">
                         –
-                        <input type="date" name="teamdisplay_periods[<?php echo $i; ?>][to]" value="<?php echo esc_attr($p['to']); ?>">
+                        <input type="month" name="teamdisplay_periods[<?php echo $i; ?>][to]" value="<?php echo esc_attr($p['to']); ?>">
                         <br>
                         <input type="text" name="teamdisplay_periods[<?php echo $i; ?>][activity]" value="<?php echo esc_attr($p['activity'] ?? ''); ?>" placeholder="Beschreibung der Aktivität" style="width:80%; margin-top:4px;">
                         <button type="button" class="remove-period">Entfernen</button>

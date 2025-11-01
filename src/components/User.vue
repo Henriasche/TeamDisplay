@@ -4,15 +4,15 @@
         <img :src="user.avatar" class="" />
       </div>
 
-      <div class="content p-4 flex column align-center">
-        <h2 class="">{{ user.name }}</h2>
+      <div class="content p-4 flex column ">
+        <h2 class="align-center">{{ user.name }}</h2>
 
         <blockquote class="mt-2 text-gray-600">{{ user.intro }}</blockquote>
 
         <div v-if="user.periods && user.periods.length" class="text-gray-600 align-start">
           <h4 class="mb-1">Stationen</h4>
           <ul>
-            <li v-for="(p, i) in user.periods" :key="i">
+            <li v-for="(p, i) in activities" :key="i">
               <strong>{{ formatDate(p.from) }} – {{ formatDate(p.to) || 'heute' }}</strong> <br/>
               <span v-if="p.activity">{{ p.activity }}</span>
             </li>
@@ -24,6 +24,7 @@
 
 <script setup lang="ts">
 import IUser from '@/interfaces/IUser'
+import { computed } from 'vue'
 
 const props = defineProps({
   user:{
@@ -32,9 +33,17 @@ const props = defineProps({
   }
 })
 
+const activities = computed(() => {
+  return props.user.periods?.sort((a, b) => {
+    const dateA = a.to ? new Date(a.to).getTime() : Date.now();
+    const dateB = b.to ? new Date(b.to).getTime() : Date.now();
+    return dateB - dateA;
+  });
+})
+
 function formatDate(date: string | number | Date) {
   if (!date) return ''
-  return new Date(date).toLocaleDateString()
+  return new Date(date).toLocaleDateString("de-DE", { year: 'numeric', month: 'long' })
 }
 </script>
 

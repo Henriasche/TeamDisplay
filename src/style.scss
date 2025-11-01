@@ -28,11 +28,11 @@
   }
 
   .align-start {
-    align-items: flex-start;
+    align-items: flex-start !important;
   }
 
   .align-end {
-    align-items: flex-end;
+    align-items: flex-end !important;
   }
 
   .space-x-4 > * + * {
