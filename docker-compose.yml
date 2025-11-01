@@ -1,0 +1,32 @@
+services:
+    db:
+        image: mysql:5.7
+        volumes:
+            - db:/var/lib/mysql
+        ports:
+            - 3306:3306
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root_password
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wp_user
+            MYSQL_PASSWORD: wp_user_password
+    
+    wordpress: 
+        image: wordpress:6.8.3
+        depends_on:
+            - db
+        ports:
+            - 8081:80
+        restart: always
+        environment:
+            WORDPRESS_DB_HOST: db:3306
+            WORDPRESS_DB_USER: wp_user
+            WORDPRESS_DB_PASSWORD: wp_user_password
+        volumes:
+            - ./:/var/www/html/wp-content/plugins/teamdisplay
+            #- ../../../wordpress_local/wp-content/plugins:/var/www/html/wp-content/plugins
+
+volumes:
+    db:
+    wordpress:
