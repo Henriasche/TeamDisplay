@@ -1,75 +1,71 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-
 #teamdisplay-app {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+}
 
-  a {
-    font-weight: 500;
-    color: #646cff;
-    text-decoration: inherit;
-  }
-  a:hover {
-    color: #535bf2;
-  }
+#teamdisplay-app .grid {
+  display: grid;
+}
 
-  body {
-    margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-  }
+#teamdisplay-app .gap-4 {
+  gap: 1rem;
+}
 
-  h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-  }
+#teamdisplay-app .flex {
+  display: flex;
+}
 
-  button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    cursor: pointer;
-    transition: border-color 0.25s;
-  }
-  button:hover {
-    border-color: #646cff;
-  }
-  button:focus,
-  button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-  }
+#teamdisplay-app .items-center {
+  align-items: center;
+}
 
-  .card {
-    padding: 2em;
-  }
+#teamdisplay-app .space-x-4 > * + * {
+  margin-left: 1rem;
+}
 
+#teamdisplay-app .w-16 {
+  width: 4rem;
+}
 
+#teamdisplay-app .h-16 {
+  height: 4rem;
+}
 
-  @media (prefers-color-scheme: light) {
-    :root {
-      color: #213547;
-      background-color: #ffffff;
-    }
-    a:hover {
-      color: #747bff;
-    }
-    button {
-      background-color: #f9f9f9;
-    }
-  }
+#teamdisplay-app .rounded-full {
+  border-radius: 9999px;
+}
 
+#teamdisplay-app .font-semibold {
+  font-weight: 600;
+}
 
+#teamdisplay-app .text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+#teamdisplay-app .text-gray-600 {
+  color: #4b5563;
+}
+
+#teamdisplay-app .mt-2 {
+  margin-top: 0.5rem;
+}
+
+#teamdisplay-app .mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+#teamdisplay-app .p-4 {
+  padding: 1rem;
+}
+
+#teamdisplay-app .shadow {
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+#teamdisplay-app .rounded {
+  border-radius: 0.25rem;
 }
 

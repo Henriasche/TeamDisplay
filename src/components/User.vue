@@ -1,7 +1,7 @@
 <template>
   <div class="user p-4 shadow rounded">
       <div class="flex items-center space-x-4">
-        <img :src="user.avatar" class="w-16 h-16 rounded-full" />
+        <img :src="user.avatar" class="w-300 h-300 rounded-full" />
         <div>
           <h3 class="font-semibold">{{ user.name }}</h3>
           <p class="text-sm text-gray-600">Status: {{ user.status }}</p>
@@ -38,7 +38,7 @@ function formatDate(date: string | number | Date) {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .user {
     background-color: white;
     border-radius: 10px;
