@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 shadow rounded">
+  <div class="user p-4 shadow rounded">
       <div class="flex items-center space-x-4">
         <img :src="user.avatar" class="w-16 h-16 rounded-full" />
         <div>
@@ -37,3 +37,13 @@ function formatDate(date: string | number | Date) {
   return new Date(date).toLocaleDateString()
 }
 </script>
+
+<style scoped>
+.user {
+    background-color: white;
+    border-radius: 10px;
+    width: max-content;
+    box-shadow: black 5px 5px 20px 0px;
+}
+
+</style>
