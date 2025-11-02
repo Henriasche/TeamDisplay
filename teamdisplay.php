@@ -27,7 +27,8 @@ add_action('wp_enqueue_scripts', function () {
     
     // Pass WordPress API URL to the Vue app
     wp_localize_script('teamdisplay-dev', 'teamdisplayConfig', [
-        'apiUrl' => rest_url('teamdisplay/v1/intros')
+        'apiUrl' => rest_url('teamdisplay/v1/intros'),
+        'siteName' => get_bloginfo('name')
     ]);
     
     wp_enqueue_style(
@@ -52,22 +53,22 @@ function teamdisplay_user_fields($user) {
 
 
     ?>
-    <h3>Watt°N und Du</h3>
+    <h3><?php echo get_bloginfo('name'); ?> und Du</h3>
     <p>Hier kannst du Angaben machen, die auf der Teamerseite angezeigt werden.</p>
     <table class="form-table">
         <tr>
-            <th><label for="teamdisplay_visible">Sichtbar?</label></th>
+            <th><label for="teamdisplay_visible">Einverständnis</label></th>
             <td>
                 <input type="checkbox" name="teamdisplay_visible" id="teamdisplay_visible" value="1"
                     <?php 
                     $visible = get_user_meta($user->ID, 'teamdisplay_visible', true);
                     checked($visible !== '' ? $visible : 1, 1); 
                     ?>>
-                <label for="teamdisplay_visible">Text darf öffentlich angezeigt werden</label>
+                <label for="teamdisplay_visible">Ich möchte auf der Teamerseite angezeigt werden</label>
             </td>
         </tr>
         <tr>
-            <th><label for="teamdisplay_intro">Vorstellungstext</label></th>
+            <th><label for="teamdisplay_intro">Ich mache mit, weil ...</label></th>
             <td>
                 <textarea name="teamdisplay_intro" id="teamdisplay_intro" rows="5" cols="30"><?php
                     echo esc_textarea(get_user_meta($user->ID, 'teamdisplay_intro', true));
@@ -82,6 +83,7 @@ function teamdisplay_user_fields($user) {
                     <option value="passiv" <?php selected($status, 'passiv'); ?>>Passiv</option>
                     <option value="alumni" <?php selected($status, 'alumni'); ?>>Alumni</option>
                 </select>
+                <p id="status-description" style="margin-top: 8px; color: #666; font-style: italic;"></p>
             </td>
         </tr>
         <tr>
@@ -126,6 +128,24 @@ function teamdisplay_user_fields($user) {
                 e.target.parentElement.remove();
             }
         });
+
+        // Status description functionality
+        const statusSelect = document.getElementById('teamdisplay_status');
+        const statusDescription = document.getElementById('status-description');
+        
+        const descriptions = {
+            'aktiv': 'Für aktive Mitglieder. Du wirst auf der Teamerseite angezeigt.',
+            'passiv': 'Für passive Mitglieder. Du wirst nicht auf der Teamerseite angezeigt.',
+            'alumni': 'Für ehemalige Mitglieder. Du wirst auf der Teamerseite in einer eigenen Liste angezeigt.'
+        };
+
+        function updateDescription() {
+            const selectedStatus = statusSelect.value;
+            statusDescription.textContent = descriptions[selectedStatus] || '';
+        }
+
+        statusSelect.addEventListener('change', updateDescription);
+        updateDescription(); // Set initial description
     });
     </script>
 <?php }

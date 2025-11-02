@@ -25,7 +25,6 @@ services:
             WORDPRESS_DB_PASSWORD: wp_user_password
         volumes:
             - ./:/var/www/html/wp-content/plugins/teamdisplay
-            #- ../../../wordpress_local/wp-content/plugins:/var/www/html/wp-content/plugins
 
 volumes:
     db:
