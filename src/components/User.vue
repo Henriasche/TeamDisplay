@@ -1,13 +1,13 @@
 <template>
   <div class="user">
-      <div class="flex align-center"> 
+      <div class="picture_wrapper flex justify-center"> 
         <img :src="user.avatar" class="" />
       </div>
 
       <div class="content p-4 flex column ">
         <h2 class="align-center">{{ user.name }}</h2>
 
-        <blockquote class="mt-2 text-gray-600">{{ user.intro }}</blockquote>
+        <blockquote v-if="user.intro" class="mt-2 text-gray-600">{{ user.intro }}</blockquote>
 
         <div v-if="user.periods && user.periods.length" class="text-gray-600 align-start">
           <h4 class="mb-1">Stationen</h4>
@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import IUser from '@/interfaces/IUser'
+import IUser from '@/src/interfaces/IUser.ts';
 import { computed } from 'vue'
 
 const props = defineProps({
@@ -49,17 +49,24 @@ function formatDate(date: string | number | Date) {
 
 <style scoped lang="scss">
 .user {
-    background-color: white;
-    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
     width: max-content;
     box-shadow: black 5px 5px 10px 0px;
-    max-width: 25%;
-    overflow: hidden;
-        
-    img {
-        width: 300px;
-        height: 300px;
+    max-width: 22%;
+    min-width: 200px;
+    overflow: hidden; 
+    margin: 20px 7.5px;
+
+    .picture_wrapper {
         background-color: #00008b4a;
+        margin-bottom: 1.5em;
+
+        img {
+            width: 100%;
+            max-height: 350px;
+            margin-bottom: 0;
+        }
     }
 
     .content {

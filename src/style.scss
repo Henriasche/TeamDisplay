@@ -24,7 +24,7 @@
   }
 
   .align-center {
-    align-items: center;
+    align-items: center !important;
   }
 
   .align-start {
@@ -33,6 +33,18 @@
 
   .align-end {
     align-items: flex-end !important;
+  }
+
+  .justify-center {
+    justify-content: center !important;
+  }
+
+  .justify-start {
+    justify-content: flex-start !important;
+  }
+
+  .justify-end {
+    justify-content: flex-end !important;
   }
 
   .space-x-4 > * + * {

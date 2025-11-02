@@ -1,5 +1,5 @@
 <template>
-  <div class="grid gap-4">
+  <div class="user-list">
       <User
         v-for="u in users"
         :key="u.id"
@@ -25,3 +25,13 @@ function formatDate(date) {
   return new Date(date).toLocaleDateString()
 }
 </script>
+
+<style scoped lang="scss">
+.user-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+</style>
