@@ -59,7 +59,10 @@ function teamdisplay_user_fields($user) {
             <th><label for="teamdisplay_visible">Sichtbar?</label></th>
             <td>
                 <input type="checkbox" name="teamdisplay_visible" id="teamdisplay_visible" value="1"
-                    <?php checked(get_user_meta($user->ID, 'teamdisplay_visible', true), 1); ?>>
+                    <?php 
+                    $visible = get_user_meta($user->ID, 'teamdisplay_visible', true);
+                    checked($visible !== '' ? $visible : 1, 1); 
+                    ?>>
                 <label for="teamdisplay_visible">Text darf öffentlich angezeigt werden</label>
             </td>
         </tr>
@@ -175,7 +178,6 @@ add_action('rest_api_init', function () {
             $data = [];
             foreach ($users as $user) {
                 $intro = get_user_meta($user->ID, 'teamdisplay_intro', true);
-                if (!$intro) continue;
                 $data[] = [
                     'id'       => $user->ID,
                     'name'     => $user->display_name,
@@ -207,6 +209,15 @@ register_activation_hook(__FILE__, function () {
             'post_status'  => 'publish',
             'post_type'    => 'page',
         ]);
+    }
+    
+    // Set default visibility to 1 for all existing users who don't have it set
+    $users = get_users();
+    foreach ($users as $user) {
+        $visible = get_user_meta($user->ID, 'teamdisplay_visible', true);
+        if ($visible === '') {
+            update_user_meta($user->ID, 'teamdisplay_visible', 1);
+        }
     }
 });
 
