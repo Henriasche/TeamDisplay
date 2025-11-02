@@ -87,4 +87,59 @@
   ul, ol {
     margin: 0;
   }
+
+  
+.details-wrapper {
+	width: 75vw;
+	margin: 0 auto;
+	background-color: #BFBFBF;
+	box-shadow:0 -1px 1px 5px #BFBFBF;
+}
+details {
+	padding: .5rem;
+	font: 1rem/1.2 sans-serif;
+}
+
+summary {
+	padding: .25rem 1rem;
+	background-color: steelblue;
+	font: bold 1.25rem/2 sans-serif;
+	color:floralwhite;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 -1px 1px 1px rgba(0,0,0,0.5);
+  cursor: pointer;
+	list-style: none; /* Triangle not shown */
+}
+/* Triangle not shown - Style for Webkit-Browser */
+summary::-webkit-details-marker {
+	display: none;
+}
+summary::before {
+	padding-right: .25rem;
+	content: '+ ';  /* Instead of Triangle closed */
+}
+details[open] summary::before {
+	padding-right: .25rem;
+	font-style: italic;
+	content: '- '; /* Instead of Triangle open */
+}
+
+/* Styling the summary in case of open 'details' */
+details[open] summary {
+	font-style: italic;
+	border-radius: 3px 3px 0 0;
+}
+
+.details-content {
+	margin: 0;
+	padding: .25rem 1rem;
+	background-color: floralwhite;
+	border-radius: 0 0 3px 3px;
+	box-shadow: 0 1px 1px 1px rgba(0,0,0,0.5);
+  color: steelblue;
+}
+.details-content p {
+	font: 1.1rem/1.5 sans-serif;
+}
 }

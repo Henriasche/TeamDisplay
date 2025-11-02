@@ -6,6 +6,7 @@
 
       <div class="content p-4 flex column ">
         <h2 class="align-center">{{ user.name }}</h2>
+        <hr/>
 
         <blockquote v-if="user.intro" class="mt-2 text-gray-600">{{ user.intro }}</blockquote>
 
@@ -57,6 +58,14 @@ function formatDate(date: string | number | Date) {
     min-width: 200px;
     overflow: hidden; 
     margin: 20px 7.5px;
+    display: inline-flex;
+    flex-direction: column;
+
+    hr {
+      width: 50%;
+      margin: 10px auto;
+      background-color: #42424245;
+    }
 
     .picture_wrapper {
         background-color: #00008b4a;
@@ -71,10 +80,16 @@ function formatDate(date: string | number | Date) {
 
     .content {
         position: relative;
+        height: 100%;
+        justify-content: space-between;
+
+        blockquote {
+          margin-bottom: auto;
+        }
     }
 
     blockquote {
-      font-size: x-large;
+      font-size: small;
       width: -webkit-fill-available;
       word-break: break-word;
       text-align: center;
