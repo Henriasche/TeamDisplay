@@ -198,6 +198,8 @@ add_action('rest_api_init', function () {
             $data = [];
             foreach ($users as $user) {
                 $intro = get_user_meta($user->ID, 'teamdisplay_intro', true);
+                $status = get_user_meta($user->ID, 'teamdisplay_status', true);
+                if ($status === 'passiv') continue;
                 $data[] = [
                     'id'       => $user->ID,
                     'name'     => $user->display_name,
