@@ -6,7 +6,7 @@
 
       <div class="content p-4 flex column ">
         <h2 class="align-center">{{ user.name }}</h2>
-        <hr/>
+        <v-divider class="my-2"></v-divider>
 
         <blockquote v-if="user.intro" class="mt-2 text-gray-600">{{ user.intro }}</blockquote>
 
@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import IUser from '@/src/interfaces/IUser.ts';
+import IUser from '@/interfaces/IUser.ts';
 import { computed } from 'vue'
 
 const props = defineProps({
