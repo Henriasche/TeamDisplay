@@ -87,7 +87,7 @@ function teamdisplay_user_fields($user) {
             </td>
         </tr>
         <tr>
-            <th><label>Aktivitätszeiträume</label></th>
+            <th><label>Erfahrungen</label></th>
             <td id="teamdisplay-periods">
                 <?php foreach ($periods as $i => $p): ?>
                     <div class="period" style="margin-bottom:8px;">

@@ -11,9 +11,9 @@
         <blockquote v-if="user.intro" class="mt-2 text-gray-600">{{ user.intro }}</blockquote>
 
         <div v-if="user.periods && user.periods.length" class="text-gray-600 align-start">
-          <h4 class="mb-1">Stationen</h4>
-          <ul>
-            <li v-for="(p, i) in activities" :key="i">
+          <h4 class="mb-1">Erfahrungen</h4>
+          <ul class="experience-list">
+            <li v-for="(p, i) in activities" :key="i" class="experience">
               <strong>{{ formatDate(p.from) }} – {{ formatDate(p.to) || 'heute' }}</strong> <br/>
               <span v-if="p.activity">{{ p.activity }}</span>
             </li>
@@ -117,6 +117,15 @@ function formatDate(date: string | number | Date) {
         font-family: "Lora";
         font-style: italic;
         position: absolute;
+    }
+
+    .experience-list {
+      list-style-type: none;
+      padding: 0;
+
+      .experience {
+        margin-bottom: 10px;
+      }
     }
 }
 
