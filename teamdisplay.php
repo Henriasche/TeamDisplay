@@ -31,6 +31,14 @@ add_action('wp_enqueue_scripts', function () {
         'siteName' => get_bloginfo('name')
     ]);
     
+    // Enqueue Material Design Icons
+    wp_enqueue_style(
+        'mdi-icons',
+        'https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css',
+        [],
+        null
+    );
+    
     wp_enqueue_style(
         'teamdisplay-style',
         plugins_url('dist/app.css', __FILE__)
